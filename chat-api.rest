@@ -1,0 +1,39 @@
+Get Chat Users
+GET/api/chat/users/:user_id
+GET http://localhost:5000/api/chat/users/user_001
+
+Start Conversation
+post api/chat/conversation/start
+post http://localhost:5000/api/chat/conversation/start
+{
+    "sender_id": "user_001",
+    "receiver_id": "user_002"
+}
+
+Get User Inbox
+GET /api/chat/conversations/:user_id
+GET http://localhost:5000/api/chat/conversations/user_001
+
+Get Messages
+GET /api/chat/messages/:conversation_id?user_id=xxx&page=1&limit=50
+GET http://localhost:5000/api/chat/messages/user_001_user_002?user_id=user_001
+
+Send Message
+POST /api/chat/message/send`[cite: 1]
+post http://localhost:5000/api/chat/message/send
+{
+    "conversation_id": "user_001_user_002",
+    "sender_id": "user_001",
+    "receiver_id": "user_002",
+    "message": "Hello Ravi this is sent via REST API!"
+}
+Verify inbox updated:
+GET http://localhost:5000/api/chat/conversations/user_001
+
+Delete Message
+DELETE /api/chat/message/:message_id?user_id=xxx
+DELETE http://localhost:5000/api/chat/message/1?user_id=user_001
+
+Get Unread Count
+GET /api/chat/unread/:user_id
+GET http://localhost:5000/api/chat/unread/user_001
